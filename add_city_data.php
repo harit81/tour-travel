@@ -1,4 +1,5 @@
-<?php include("layouts/header.php");
+<?php
+include("layouts/header.php");
 include('layouts/db.php');
 $city_image = $city_name = $city_desc = "";
 $city_image_error = $city_name_error = $city_desc_error = "";
@@ -13,6 +14,8 @@ $thing_to_do=$_POST['thing_to_do'];
 $best_time_to_visit=$_POST['best_time_to_visit'];
 $how_to_reach=$_POST['how_to_reach'];
 $currency=$_POST['currency'];
+$places_to_visit=$_POST['places_to_visit'];
+$visa_info=$_POST['visa_info'];
 if(empty($city_name)){
 $city_name_error = 'Please enter name of city';
 }
@@ -23,7 +26,7 @@ if(empty($city_image)){
 $city_image_error = 'Please choose image of city';
 }
 if(empty($city_image_error)&&empty($city_name_error)&&empty($city_desc_error)){
-$insert_city_data="INSERT INTO package_city(package_city_name,package_city_image,package_city_desc,thing_to_do,best_time_to_visit,how_to_reach,currency)VALUES('$city_name','$city_image','$city_desc','$thing_to_do','$best_time_to_visit','$how_to_reach','$currency')";
+$insert_city_data="INSERT INTO package_city(package_city_name,package_city_image,package_city_desc,thing_to_do,best_time_to_visit,how_to_reach,place_to_visit,currency,visa)VALUES('$city_name','$city_image','$city_desc','$thing_to_do','$best_time_to_visit','$how_to_reach','$places_to_visit','$currency','$visa_info')";
 mysqli_query($conn,$insert_city_data);
 header("Location: add_city_data.php");
 }
@@ -142,6 +145,52 @@ header("Location: add_city_data.php");
                     <input type="text" class="form-control" id="exampleInput" placeholder="Currency Name" name="currency">
                   </div>
                 </div>
+                <!-- Main content -->
+                 <div class="form-group">
+                    <label for="exampleInputEmail1">Enter Places to Visit</label>
+                 <section class="content">
+                   <div class="row">
+                      <div class="col-sm-12">
+                        <div class="card card-outline card-info">
+                         <div class="card-header">
+                            <h3 class="card-title">
+                              Places to Visit
+               
+                            </h3>
+              <!-- tools box -->
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                  <i class="fas fa-times"></i></button>
+              </div>
+              <!-- /. tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body pad">
+              <div class="mb-3">
+                <textarea class="textarea" placeholder="Place some text here" name="places_to_visit" 
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-->
+      </div>
+      <!-- ./row -->
+    </section>
+  </div>
+   <div class="form-group">
+                      <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Enter Visa Infomation</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter Visa Infomation ..." name="visa_info"><?php #echo $city_desc;?></textarea>
+                      </div>
+                    </div>
+                  </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary" name="add_city_submit">Submit</button>
                 </div>
@@ -152,5 +201,11 @@ header("Location: add_city_data.php");
   <?php include("layouts/footer.php"); ?>
 </div>
 <?php include("layouts/scripts.php"); ?>
+<script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote()
+  })
+</script>
 </body>
 </html>

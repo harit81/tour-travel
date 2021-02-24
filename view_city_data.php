@@ -49,6 +49,7 @@ include('layouts/db.php');
                     <th>Best time visit</th>
                     <th>How to Reach</th>
                     <th>Place to visit</th>
+                    <th>Visa Infomation</th>
                     <th>Currency</th>
                     <th>Edit</th>
                     <th>Delete</th>
@@ -71,6 +72,7 @@ include('layouts/db.php');
                                $row_city_how_to_reach=$row['how_to_reach'];
                                $row_city_place_to_visit=$row['place_to_visit'];
                                $row_city_currency=$row['currency'];
+                               $visa_info=$row['visa'];
                                ?><tr>
                               <td><?php echo $i;?></td>
                               <td><?php echo $row_city_name;?></td>
@@ -80,6 +82,7 @@ include('layouts/db.php');
                               <td><?php echo $row_city_best_time;?></td>
                               <td><?php echo $row_city_how_to_reach;?></td>
                               <td><?php echo $row_city_place_to_visit;?></td>
+                              <td><?php echo $visa_info;?></td>
                               <td><?php echo $row_city_currency;?></td>
                               <td><a href="edit_city_data.php?city_edit_id=<?php echo $row_city_id;?>">Edit</a></td>
                               <td><a href="?delete_id=<?php echo $row_city_id;?>">Delete</a></td>
@@ -99,6 +102,7 @@ include('layouts/db.php');
                     <th>Best time visit</th>
                     <th>How to Reach</th>
                     <th>Place to visit</th>
+                     <th>Visa Infomation</th>
                     <th>Currency</th>
                     <th>Edit</th>
                     <th>Delete</th>

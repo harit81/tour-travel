@@ -15,6 +15,7 @@ $package_city_best_time_data=$row_fetc_city_data['best_time_to_visit'];
 $package_city_how_to_reach_data=$row_fetc_city_data['how_to_reach'];
 $package_city_place_to_visit_data= $row_fetc_city_data['place_to_visit'];
 $package_city_currency_data=$row_fetc_city_data['currency'];
+$visa_info=$row_fetc_city_data['visa'];
 }
 if(isset($_POST['add_city_submit'])){
 $city_name=$_POST['city_name'];
@@ -27,6 +28,8 @@ $thing_to_do=$_POST['thing_to_do'];
 $best_time_to_visit=$_POST['best_time_to_visit'];
 $how_to_reach=$_POST['how_to_reach'];
 $currency=$_POST['currency'];
+$places_to_visit=$_POST['places_to_visit'];
+$visa_info=$_POST['visa_info'];
 if(empty($city_name)){
 $city_name_error = 'Please enter name of city';
 }
@@ -34,10 +37,11 @@ if(empty($city_desc)){
 $city_desc_error = 'Please enter Description of city';
 }
 if(empty($city_image)){
-$city_image_error = 'Please choose image of city';
+//$city_image_error = 'Please choose image of city';
+  $city_image=$package_city_image_data;
 }
 if(empty($city_image_error)&&empty($city_name_error)&&empty($city_desc_error)){
-echo $update_city_data="UPDATE package_city SET package_city_name='$city_name',package_city_image='$city_image',package_city_desc='$city_desc',thing_to_do='$thing_to_do',best_time_to_visit='$best_time_to_visit',how_to_reach='$how_to_reach',currency='$currency' WHERE package_city_id='$city_id'";  
+echo $update_city_data="UPDATE package_city SET package_city_name='$city_name',package_city_image='$city_image',package_city_desc='$city_desc',thing_to_do='$thing_to_do',best_time_to_visit='$best_time_to_visit',how_to_reach='$how_to_reach',place_to_visit='$places_to_visit',currency='$currency',visa='$visa_info'  WHERE package_city_id='$city_id'";  
 mysqli_query($conn,$update_city_data);
 header("Location: view_city_data.php");
 }
@@ -108,7 +112,7 @@ header("Location: view_city_data.php");
                       </div>
                     </div>
                   </div>
-                  <span class="text-danger"><?php echo $city_image_error; ?></span>
+                  <span class="text-danger"><?php #echo $city_image_error; ?></span>
                    <div class="form-group">
                       <div class="row">
                     <div class="col-sm-12">
@@ -156,6 +160,51 @@ header("Location: view_city_data.php");
                     <input type="text" class="form-control" id="exampleInput" placeholder="Currency Name" name="currency" value="<?php echo $package_city_currency_data;?>">
                   </div>
                 </div>
+                 <div class="form-group">
+                    <label for="exampleInputEmail1">Enter Places to Visit</label>
+                 <section class="content">
+                   <div class="row">
+                      <div class="col-sm-12">
+                        <div class="card card-outline card-info">
+                         <div class="card-header">
+                            <h3 class="card-title">
+                              Places to Visit
+               
+                            </h3>
+              <!-- tools box -->
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                  <i class="fas fa-times"></i></button>
+              </div>
+              <!-- /. tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body pad">
+              <div class="mb-3">
+                <textarea class="textarea" placeholder="Place some text here" name="places_to_visit" 
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo $package_city_place_to_visit_data;?></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-->
+      </div>
+      <!-- ./row -->
+    </section>
+  </div>
+   <div class="form-group">
+                      <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Enter Visa Infomation</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter Visa Infomation ..." name="visa_info"><?php echo $visa_info;?></textarea>
+                      </div>
+                    </div>
+                  </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary" name="add_city_submit">Submit</button>
                 </div>
@@ -166,5 +215,11 @@ header("Location: view_city_data.php");
   <?php include("layouts/footer.php"); ?>
 </div>
 <?php include("layouts/scripts.php"); ?>
+<script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote()
+  })
+</script>
 </body>
 </html>

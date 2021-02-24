@@ -42,7 +42,9 @@ include("layout/db.php");
                               $get_minimum_price_result=mysqli_query($conn,$get_minimum_price);
                               $get_minimum_price_fetch_row=mysqli_fetch_assoc($get_minimum_price_result);
                               $minimum_price_of_package=$get_minimum_price_fetch_row['MIN(price)'];
+                              if($count_of_state_package>0){
                                ?>
+                              
       
               <div class="col-md-4">
             <div class="product-item">
@@ -57,7 +59,7 @@ include("layout/db.php");
             </div>
           </div>
 <?php
-}}
+}}}
 ?> 
            
 

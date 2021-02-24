@@ -51,24 +51,15 @@
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link" href="packages.php">Packages</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="packages.php">Packages</a></li> -->
 
                 <li class="nav-item"><a class="nav-link" href="city-category.php">City</a></li>
-                <li class="nav-item"><a class="nav-link" href="package-category.php">States</a></li>
+               <!--  <li class="nav-item"><a class="nav-link" href="package-category.php">States</a></li> -->
 
                  <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
 
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
-                    
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="about-us.php">About Us</a>
-                      <a class="dropdown-item" href="testimonials.php">Testimonials</a>
-                      <a class="dropdown-item" href="terms.php">Terms</a>
-                    </div>
-                </li>
                  <?php
-                 $get_category_deatils="SELECT * FROM package_category";
+                 $get_category_deatils="SELECT * FROM package_category LIMIT 2";
                  $get_category_deatils_result=mysqli_query($conn,$get_category_deatils);
                  if(mysqli_num_rows($get_category_deatils_result)>0){
                   while($row_category=mysqli_fetch_assoc($get_category_deatils_result)){
@@ -76,7 +67,7 @@
                      $category_name=$row_category['category_name'];
                  ?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"  style="font-size: 12px;" aria-expanded="false"><?php echo $category_name;?></a>
+                    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $category_name;?></a>
                       <div class="dropdown-menu" style="font-size: 10px;">
                     <?php
                      $get_state_data="SELECT * FROM package_details  WHERE category='$category_id' LIMIT 5";
@@ -94,8 +85,18 @@
 
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                    
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="about-us.php">About Us</a>
+                      <a class="dropdown-item" href="contact.php">Contact Us</a>
+                      <a class="dropdown-item" href="testimonials.php">Testimonials</a>
+                      <a class="dropdown-item" href="terms.php">Terms</a>
+                    </div>
+                </li>
                
-                <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+               <!--  <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li> -->
             </ul>
           </div>
         </div>

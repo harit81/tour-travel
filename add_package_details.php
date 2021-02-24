@@ -17,7 +17,7 @@ if(isset($_POST['package_detail_submit'])){
   $package_status= $_POST['package_status'];
   $package_desc = $_POST['package_desc'];
   $total_seat = $_POST['total_seat'];
-  // $category_id = $_POST['category_id[]'];
+  $category_id = $_POST['category_id'];
   // $city_data = $_POST['city_data[]'];
   if(empty($city)){
     $city_error = 'Please Select city.';

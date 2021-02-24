@@ -50,6 +50,7 @@ include('layouts/db.php');
                   </tr>
                   </thead>
                   <tbody>
+                    <form action="" method="POST">
                    <?php 
                           $get_contact_us_details="SELECT * FROM contact_us ORDER BY contact_id DESC";
                           $get_contact_us_details_result=mysqli_query($conn,$get_contact_us_details);
@@ -69,12 +70,17 @@ include('layouts/db.php');
                               <td><?php echo $row_contact_email;?></td>
                               <td><?php echo $row_contact_subject;?></td>
                               <td><?php echo $row_contact_message;?></td>
-                              <td><a href="?delete_id=<?php echo $row_contact_id;?>">Delete</a></td>
+                              <td><a href="?delete_id=<?php echo $row_contact_id;?>">Delete</a>
+                                <input type="checkbox"  name="delete_all_id[]"value="<?php echo $row_contact_id;?>">
+                                <!--  <input type="checkbox" name="city_data[]" value="<?php echo $city_data_id;?>">  &nbsp;<?php echo ' '.$city_data_name;?><br> -->
+
+                              </td>
                             </tr>
                                <?php
                             }
                           }
                           ?>
+                           
                  </tbody>
                   <tfoot>
                   <tr>
@@ -86,7 +92,9 @@ include('layouts/db.php');
                     <th>Delete</th>
                   </tr>
                   </tfoot>
-                </table>    
+                </table>   
+                <button type="submit" class="btn btn-primary" name="package_detail_submit" style="float: right;">Submit</button>
+                        </form> 
             </div> 
                         
     </section>    
@@ -97,10 +105,14 @@ include('layouts/db.php');
 </body>
 </html>
 <?php
-if(isset($_GET['delete_id'])){
-  $contact_us_delete_id=$_GET['delete_id'];
-  $delete_query="DELETE FROM contact_us WHERE contact_id='$contact_us_delete_id'";
-  mysqli_query($conn,$delete_query);
-  header("Location: view_contact_us.php");
+if(isset($_POST['package_detail_submit'])){
+$delete_id=$_POST['delete_all_id'];
+$delete_id_count=count($delete_id);
+for($i=0;$i<$delete_id_count;$i++){
+$delete_id_value=$_POST['delete_all_id'][$i];
+$delete_contact_data="DELETE FROM contact_us WHERE contact_id='$delete_id_value'";
+mysqli_query($conn,$delete_contact_data);
+}
+header("Location: view_contact_us.php");
 }
 ?>

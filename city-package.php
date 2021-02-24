@@ -9,7 +9,9 @@
     $Package_city_thing_to_do=$row_fetch_city_data['thing_to_do'];
     $package_best_time_to_visit=$row_fetch_city_data['best_time_to_visit'];
     $package_how_to_reach=$row_fetch_city_data['how_to_reach'];
+    $place_to_visit=$row_fetch_city_data['place_to_visit'];
     $currency=$row_fetch_city_data['currency'];
+    $visa_info=$row_fetch_city_data['visa'];
 }?>
 
  <div class="page-heading about-heading header-text" style="background-image: url(images/<?php echo $package_city_image;?>);">
@@ -67,22 +69,22 @@
           <h2 style="color:#DA2128;">Thing to do in <?php echo $package_city_name;?></h2><hr>
           <h6 style="text-align: justify;"><?php echo $Package_city_thing_to_do;?></h6>
         </div>
-
-      <!--   <div class="section">
-      <div class="container"> -->
         <div class="section-heading" style="border: 0">
           <h2 style="color:#DA2128;">Best Time to Visit <?php echo $package_city_name;?></h2><hr>
           <h6 style="text-align: justify;"><?php echo  $package_best_time_to_visit;?></h6>
         </div>
-         <!--  <div class="section">
-      <div class="container"> -->
         <div class="section-heading" style="border: 0">
           <h2 style="color:#DA2128;">How to Reach <?php echo $package_city_name;?></h2><hr>
           <h6 style="text-align: justify;"><?php echo $package_how_to_reach;?></h6>
         </div>
-                
-                 <!-- <div class="section">
-      <div class="container"> -->
+         <div class="section-heading" style="border: 0">
+          <h2 style="color:#DA2128;">Places to Visit in <?php echo $package_city_name;?></h2><hr>
+          <h6 style="text-align: justify;"><?php echo $place_to_visit;?></h6>
+        </div>  
+         <div class="section-heading" style="border: 0">
+          <h2 style="color:#DA2128;">Visa </h2><hr>
+          <h6 style="text-align: justify;"><?php echo $visa_info;?></h6>
+        </div>      
         <div class="section-heading" style="border: 0">
           <h2 style="color:#DA2128;">Currency in <?php echo $package_city_name;?></h2><hr>
           <h6 style="text-align: justify;"><?php echo $currency;?></h6>

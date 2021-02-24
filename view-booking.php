@@ -51,7 +51,7 @@ include('layouts/db.php');
                     <th>Date of Travel </th>
                      <th>Booking Date </th>
                      <th>User Address</th>
-                     <th>Action</th>
+                     <th>Status/Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -126,7 +126,7 @@ include('layouts/db.php');
                     <th>Date of Travel </th>
                     <th>Booking Date </th>
                     <th>User Address</th>
-                    <th>Action</th>
+                    <th>Status/Action</th>
                   </tr>
                   </tfoot>
                 </table>    
